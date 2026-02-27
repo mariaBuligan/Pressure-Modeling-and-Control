@@ -58,3 +58,25 @@ Simulation results demonstrate excellent disturbance rejection, with the system 
 </p>
 
 **Physical installation validation:** The experimental results confirm that the PI controller was correctly calculated, with the physical installation performing as predicted by the simulation.
+
+## Analytical Modeling
+
+For analytical modeling of the process, the transfer functions of the execution elements were determined. The pump model was identified, and based on information extracted from the installation manual, the necessary modeling data were established: pump flow rate of 20 l/min and pipe diameter of 20 mm.
+
+The flow process (pressure of water in the installation) was modeled considering the physical principles. The transfer function for the flow process is:
+
+$$H_p = \frac{0.5}{\left(\frac{L^5}{2kFS}\right)s + 1}$$
+
+where $L$ is the pipe length, $k$ is a constant, $F$ is the cross-sectional area, and $S$ is a system parameter.
+
+The execution element transfer function was obtained from the installation documentation:
+
+$$H_{EE} = \frac{K_t}{(Js + b)(Ls + R) + k_e^2}$$
+
+where $K_t$ is the torque constant, $J$ is the moment of inertia, $b$ is the damping coefficient, $L$ is the inductance, $R$ is the resistance, and $k_e$ is the back-EMF constant.
+
+<p align="center">
+  <img src="graphics/Pump_doc.png" width="60%" />
+</p>
+
+The pump documentation provided the necessary parameters $F$ and $S$ for calculating $H_p$.
