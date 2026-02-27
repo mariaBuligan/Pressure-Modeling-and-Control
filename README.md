@@ -96,10 +96,22 @@ The imposed performance criteria were:
 The cascade control structure places the experimentally identified process (with $H_r$) in the internal loop and the analytical model ($H_p \cdot H_{EE}$ with $H_{r2}$) in the external loop. This configuration is chosen because the pressure process is fast, allowing the inner loop to quickly respond to disturbances before they propagate to the outer loop. The inner loop acts as a fast corrective mechanism, while the outer loop ensures overall system performance and setpoint tracking.
 
 <p align="center">
-  <img src="graphics/Simulare_cascada.png" width="45%" />
-  <img src="graphics/Sim_cascada_perturb.png" width="45%" />
+  <img src="graphics/SImulare_cascada.png" width="45%" />
+  <img src="graphics/Sim_casacada_perturb.png" width="45%" />
 </p>
 
 The cascade control simulation shows significantly smoother response compared to the single-loop controller.
 
 With disturbances applied, the cascade structure demonstrates superior performance. The smoother response is achieved because the inner loop rapidly compensates for disturbances affecting the fast pressure dynamics, preventing them from reaching the outer loop. This two-stage correction mechanism results in reduced oscillations, faster disturbance rejection, and improved overall system stability.
+
+## Analog-to-Digital Conversion
+
+To improve user experience, an analog-to-digital conversion layer was implemented using a gain controller. This allows users to input the desired pressure directly in physical units (Bar) rather than abstract command values in the discrete range [0, 255].
+
+The conversion maps the discrete domain [0, 255] to the analog pressure range of the instllation [0, 0.4] Bar, providing an intuitive interface where users can specify pressure setpoints in meaningful engineering units. For example, a reference value of 0.2 Bar corresponds to approximately 127.5 in the discrete domain.
+
+<p align="center">
+  <img src="graphics/CAN.png" width="60%" />
+</p>
+
+This conversion layer is particularly beneficial for operators unfamiliar with the system's internal digital representation, enabling direct pressure specification and making the control system more accessible and user-friendly.
