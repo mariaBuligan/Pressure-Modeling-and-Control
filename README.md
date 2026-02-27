@@ -96,8 +96,8 @@ The imposed performance criteria were:
 The cascade control structure places the experimentally identified process (with $H_r$) in the internal loop and the analytical model ($H_p \cdot H_{EE}$ with $H_{r2}$) in the external loop. This configuration is chosen because the pressure process is fast, allowing the inner loop to quickly respond to disturbances before they propagate to the outer loop. The inner loop acts as a fast corrective mechanism, while the outer loop ensures overall system performance and setpoint tracking.
 
 <p align="center">
-  <img src="graphics/SImulare_cascada.png" width="45%" />
-  <img src="graphics/Sim_casacada_perturb.png" width="45%" />
+  <img src="graphics/SImulare_cascada.png" width="30%" />
+  <img src="graphics/Sim_casacada_perturb.png" width="55%" />
 </p>
 
 The cascade control simulation shows significantly smoother response compared to the single-loop controller.
@@ -111,7 +111,7 @@ To improve user experience, an analog-to-digital conversion layer was implemente
 The conversion maps the discrete domain [0, 255] to the analog pressure range of the instllation [0, 0.4] Bar, providing an intuitive interface where users can specify pressure setpoints in meaningful engineering units. For example, a reference value of 0.2 Bar corresponds to approximately 127.5 in the discrete domain.
 
 <p align="center">
-  <img src="graphics/CAN.png" width="60%" />
+  <img src="graphics/CAN.png" width="45%" />
 </p>
 
 This conversion layer is particularly beneficial for operators unfamiliar with the system's internal digital representation, enabling direct pressure specification and making the control system more accessible and user-friendly.
