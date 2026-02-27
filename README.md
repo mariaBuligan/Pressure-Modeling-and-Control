@@ -80,3 +80,26 @@ where $K_t$ is the torque constant, $J$ is the moment of inertia, $b$ is the dam
 </p>
 
 The pump documentation provided the necessary parameters $F$ and $S$ for calculating $H_p$.
+
+## Cascade Control Implementation
+
+A PID controller was designed for the analytical model $H_p \cdot H_{EE}$ with the following transfer function:
+
+$$H_{r2} = K_p\left(1 + \frac{T_i}{s} + \frac{T_d s}{T_f s + 1}\right)$$
+
+The imposed performance criteria were:
+- Overshoot < 5%
+- Settling time $t_t$ < 6 seconds
+
+### Cascade Control Architecture
+
+The cascade control structure places the experimentally identified process (with $H_r$) in the internal loop and the analytical model ($H_p \cdot H_{EE}$ with $H_{r2}$) in the external loop. This configuration is chosen because the pressure process is fast, allowing the inner loop to quickly respond to disturbances before they propagate to the outer loop. The inner loop acts as a fast corrective mechanism, while the outer loop ensures overall system performance and setpoint tracking.
+
+<p align="center">
+  <img src="graphics/Simulare_cascada.png" width="45%" />
+  <img src="graphics/Sim_cascada_perturb.png" width="45%" />
+</p>
+
+The cascade control simulation shows significantly smoother response compared to the single-loop controller.
+
+With disturbances applied, the cascade structure demonstrates superior performance. The smoother response is achieved because the inner loop rapidly compensates for disturbances affecting the fast pressure dynamics, preventing them from reaching the outer loop. This two-stage correction mechanism results in reduced oscillations, faster disturbance rejection, and improved overall system stability.
